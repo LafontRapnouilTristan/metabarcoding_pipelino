@@ -6,7 +6,7 @@ This pipeline aims to respects the [FAIR](https://www.go-fair.org/fair-principle
 
 Pipeline for raw NGS metabarcoding data processing using a combination of the OBItools, dada2 and sumaclust.
 
-You'll find parameters TEST used by the pipeline in the [config file](config/config.yaml).
+You'll find parameters used by the pipeline in the [config file](config/config.yaml).
 
 A DAG of the pipeline is available [here](dag/dag.svg).
 
