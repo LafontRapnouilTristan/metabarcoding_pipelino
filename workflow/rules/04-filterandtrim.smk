@@ -1,5 +1,5 @@
 # Filter and trim
-rule filt_and_trim:
+rule filt_and_trim_04:
   input:
     config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed.fasta"
   output:

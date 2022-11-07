@@ -1,5 +1,5 @@
 # dereplication
-rule derep:
+rule derep_05:
   input:
     config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed_filtAndTrim.fasta"
   output:
