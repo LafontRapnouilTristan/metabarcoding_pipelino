@@ -1,8 +1,12 @@
 This pipeline starts from raw foward (R1) and reverse (R2) `.fastq` files and a `.tab` ngsfilter file.
 
-This pipeline respects the [FAIR](https://www.go-fair.org/fair-principles/) principle using [snakemake](https://snakemake.readthedocs.io/en/stable/#) and [singularity](https://docs.sylabs.io/guides/3.0/user-guide/index.html#) tools.
+This pipeline aims to respects the [FAIR](https://www.go-fair.org/fair-principles/) principles using [snakemake](https://snakemake.readthedocs.io/en/stable/#) and [singularity](https://docs.sylabs.io/guides/3.0/user-guide/index.html#) tools.
 
+# Description
 
+Pipeline for raw NGS metabarcoding data processing using a combination of the OBItools, dada2 and sumaclust.
+You'll find parameters used by the pipeline in the`config.yaml` file in the `config` folder.
+A DAG of the pipeline is available [here](dag/dag.svg)
 
 # Pipeline steps and tools
 
