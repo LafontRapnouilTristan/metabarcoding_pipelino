@@ -4,3 +4,5 @@
 .Ruserdata
 data_input
 workflow/envs/test.sif
+results
+resources
