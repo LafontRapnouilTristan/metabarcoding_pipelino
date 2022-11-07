@@ -7,14 +7,15 @@ reads_prime:
 tomerge:
   FALSE
 resourcesfolder:
-  ../resources/
+  resources/
 resultsfolder:
-  ../results/
+  results/
 fastqfiles:
   - mother_16s
 mergedfile:
   holobrom_16s
-  
+split_fastq:
+    nfiles: 10
 # align filter
 alifilt:
   minscore: 30.00
