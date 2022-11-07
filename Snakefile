@@ -10,16 +10,16 @@ This is a snakemake workflow that analyzes DNA metabarcoding data with the OBITo
 
 """
 
-configfile:"./config/config.yaml"
+configfile:"config/config.yaml"
 
 
 
 # GET FINAL OUTPUT(S)
 #def get_input_all():
 #  if config["tomerge"]:
-#    inputfiles = config["resultsfolder"]+config["mergedfile"]+"/"+config["mergedfile"]+"_R1R2_good_demultiplexed_derepl_basicfilt_nonchimera_cl_agg_ass.tab",
+#    inputfiles = config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed_filtAndTrim_derep_cleaned_abfilt_bimerafree_cl_agg.tab",
 #  else:
-#    inputfiles = expand("{folder}{run}/{run}_R1R2_good_demultiplexed_derepl_basicfilt_nonchimera_cl_agg_ass.tab",run = config["fastqfiles"],folder = config["resultsfolder"]),
+#    inputfiles = expand("{folder}{run}/{run}_R1R2_good_demultiplexed_filtAndTrim_derep_cleaned_abfilt_bimerafree_cl_agg.tab",run = #config["fastqfiles"],folder = config["resultsfolder"]),
 #  return inputfiles
 
 
@@ -27,22 +27,19 @@ configfile:"./config/config.yaml"
 #  input:
 #    get_input_all()
 
-###################
 rule all:
-  input:
-    demultiplexed=config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed.fasta",
-		unassigned=config["resultsfolder"]+"{run}/{run}_R1R2_good_unassigned.fasta"
-##################
-    
-include: "./workflow/rules/01-pairing.smk"
-include: "./workflow/rules/02-sort_alignments.smk"
-include: "./workflow/rules/03-demultiplex.smk"
-# include: "./workflow/rules/04-filterandtrim.smk"
-# include: "./workflow/rules/05-derep.smk"
-# include: "./workflow/rules/06-obi_clean.smk"
-# include: "./workflow/rules/07-abbundance_filt.smk"
-# include: "./workflow/rules/08-bimera_rm.smk"
-# include: "./workflow/rules/09-otu_clust.smk"
-# include: "./workflow/rules/10-merge_clust.smk"
-# include: "./workflow/rules/105-assign_tax.smk"
-# include: "./workflow/rules/11-format_out.smk"
+    input:
+        expand(config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed_filtAndTrim_derep_cleaned_abfilt_bimerafree_cl_agg.tab",run=config["fastqfiles"])
+
+include: "workflow/rules/01-pairing.smk"
+include: "workflow/rules/02-sort_alignments.smk"
+include: "workflow/rules/03-demultiplex.smk"
+include: "workflow/rules/04-filterandtrim.smk"
+include: "workflow/rules/05-derep.smk"
+include: "workflow/rules/06-obi_clean.smk"
+include: "workflow/rules/07-abbundance_filt.smk"
+include: "workflow/rules/08-bimera_rm.smk"
+include: "workflow/rules/09-otu_clust.smk"
+include: "workflow/rules/10-merge_clust.smk"
+#include: "workflow/rules/105-assign_tax.smk"
+include: "workflow/rules/11-format_out.smk"
