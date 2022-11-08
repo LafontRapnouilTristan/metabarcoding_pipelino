@@ -29,17 +29,17 @@ configfile:"config/config.yaml"
 
 rule all:
     input:
-        expand(config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed_filtAndTrim_derep_cleaned_abfilt_bimerafree_cl_agg.tab",run=config["fastqfiles"])
+        expand(config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed_filtAndTrim_derep.fasta",run=config["fastqfiles"])
 
 include: "workflow/rules/01-pairing.smk"
 include: "workflow/rules/02-sort_alignments.smk"
 include: "workflow/rules/03-demultiplex.smk"
 include: "workflow/rules/04-filterandtrim.smk"
 include: "workflow/rules/05-derep.smk"
-include: "workflow/rules/06-obi_clean.smk"
-include: "workflow/rules/07-abbundance_filt.smk"
-include: "workflow/rules/08-bimera_rm.smk"
-include: "workflow/rules/09-otu_clust.smk"
-include: "workflow/rules/10-merge_clust.smk"
+#include: "workflow/rules/06-obi_clean.smk"
+#include: "workflow/rules/07-abbundance_filt.smk"
+#include: "workflow/rules/08-bimera_rm.smk"
+#include: "workflow/rules/09-otu_clust.smk"
+#include: "workflow/rules/10-merge_clust.smk"
 #include: "workflow/rules/105-assign_tax.smk"
-include: "workflow/rules/11-format_out.smk"
+#include: "workflow/rules/11-format_out.smk"
