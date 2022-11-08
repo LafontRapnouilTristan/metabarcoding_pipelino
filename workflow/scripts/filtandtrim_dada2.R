@@ -2,6 +2,7 @@
 log <- file(snakemake@log[[1]], open="wt")
 sink(log)
 sink(log, type="message")
+
 library(dada2)
 filterAndTrim(snakemake@input[[1]],
               snakemake@output[[1]],
