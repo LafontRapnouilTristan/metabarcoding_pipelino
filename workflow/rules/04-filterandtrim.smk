@@ -4,7 +4,7 @@ rule filt_and_trim_04:
     config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed.fasta"
   output:
     config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed_filtAndTrim.fasta"
-  singularity:
-    "../envs/test.sif"
+  conda:
+    "../envs/R_env.yaml"
   script:
     "../scripts/filtandtrim_dada2.R"

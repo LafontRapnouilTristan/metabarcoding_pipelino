@@ -11,7 +11,7 @@ checkpoint split_fastq:
 		R1=config["resultsfolder"]+"{run}/splitted_fastq/{run}_R1",
 		R2=config["resultsfolder"]+"{run}/splitted_fastq/{run}_R2"
 	conda:
-		"envs/obi_env.yaml"
+		"../envs/obi_env.yaml"
 	shell:
 		"""
 		mkdir {params.folder}
@@ -28,7 +28,7 @@ rule pairing:
 	output:
 		temp(config["resultsfolder"]+"{run}/splitted_fastq/{run}_R1R2_{n}.fastq")
 	conda:
-		"envs/obi_env.yaml"
+		"../envs/obi_env.yaml"
 	shell:
 		"""
 		illuminapairedend -r {input.R2} {input.R1} > {output}
