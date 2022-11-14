@@ -24,7 +24,7 @@ A DAG of the pipeline is available [here](dag/dag.svg).
 
 a - split fasq for faster processing
 
-**OBItools** - [*obidistribute*](https://pythonhosted.org/OBItools/scripts/obidistribute.html)
+**OBItools** - [*obidistribute*](https://pythonhosted.org/OBITools/scripts/obidistribute.html)
 
 options : 
   `-n` : number of files to split in, `nfile` in [`config`](config/config.yaml). 
