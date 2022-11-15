@@ -43,7 +43,7 @@ obiclean:
 
 # Abundance filtering
 abb_filt: 
-  mincount: 10
+  mincount: 1
 
 # clustering
 clustering:
