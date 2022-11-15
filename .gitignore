@@ -7,3 +7,5 @@ workflow/envs/test.sif
 results
 resources
 .snakemake
+log
+dag
