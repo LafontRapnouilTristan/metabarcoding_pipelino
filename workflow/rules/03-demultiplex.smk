@@ -3,17 +3,17 @@ rule demultiplex_03:
 	input:
 		config["resultsfolder"]+"{run}/{run}_R1R2_good.fastq"
 	output:
-		demultiplexed=config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed.fasta",
-		unassigned=config["resultsfolder"]+"{run}/{run}_R1R2_good_unassigned.fasta"
+		demultiplexed=config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed.fastq",
+		unassigned=config["resultsfolder"]+"{run}/{run}_R1R2_good_unassigned.fastq"
 	params:
 		ngs=config["resourcesfolder"]+"{run}/{run}_ngsfilter.tab"
 	log:
-		"../log/demultiplex_{run}.log"
+		"log/demultiplex_{run}.log"
 	conda:
 		"../envs/obi_env.yaml"
 	shell:
 		"""
-		obiannotate --without-progress-bar --sanger -S 'Avgqphred:-int(math.log10(sum(sequence.quality)/len(sequence))*10)' {input} | ngsfilter --fasta-output -t {params.ngs} -u {output.unassigned} > {output.demultiplexed} 2> {log}
+		obiannotate --without-progress-bar --sanger -S 'Avgqphred:-int(math.log10(sum(sequence.quality)/len(sequence))*10)' {input} | ngsfilter --fastq-output -t {params.ngs} -u {output.unassigned} > {output.demultiplexed} 2> {log}
 		"""
 
 
@@ -21,9 +21,9 @@ if config["tomerge"]:
 	# MERGE LIBRARIES
 	rule merge_demultiplex:
 		input:
-			expand(config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed.fasta", run=config["fastqfiles"])
+			expand(config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed.fastq", run=config["fastqfiles"])
 		output:
-			config["resultsfolder"]+config["mergedfile"]+"/"+config["mergedfile"]+"_R1R2_good_demultiplexed.fasta"
+			config["resultsfolder"]+config["mergedfile"]+"/"+config["mergedfile"]+"_R1R2_good_demultiplexed.fastq"
 		log:
 			"../log/merge_demultiplex_"+config["mergedfile"]+".log"
 		shell:

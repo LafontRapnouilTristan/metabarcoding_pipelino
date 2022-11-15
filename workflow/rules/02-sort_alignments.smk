@@ -9,7 +9,7 @@ rule alifilt_03:
 		minscore=config["alifilt"]["minscore"],
 		prefix=config["resultsfolder"]+"{run}/{run}_R1R2_"
 	log:
-		"../log/split_ali_{run}.log"
+		"log/split_ali_{run}.log"
 	conda:
 		"../envs/obi_env.yaml"
 	shell:
