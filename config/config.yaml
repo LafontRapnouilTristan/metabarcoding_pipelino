@@ -1,6 +1,6 @@
 # general params
 general:
-    cores: 8
+    cores: 4
 reads_prime:
   - R1
   - R2
@@ -17,7 +17,7 @@ mergedfile:
   
 # split files
 split_fastq:
-    nfiles: 10
+    nfiles: 1000
     
 # align filter
 alifilt:
@@ -31,7 +31,7 @@ filterandtrim:
   truncQ: 2
   matchIDs: TRUE
   verbose: TRUE
-  multithread: 15
+  multithread: 4
 
 # dereplication
 dereplication:
