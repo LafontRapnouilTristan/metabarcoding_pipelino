@@ -50,6 +50,5 @@ clustering:
   minsim: 0.97
   
 # taxa
-assign_taxon:
-    fasta: ../../pipelino/TaxonomyDatabase/silva_nr_v138_train_set.fa
-    sim_thld: 0.97
+taxassign:
+    taxofolder: ../../pipelino/TaxonomyDatabase/silva_nr_v138_train_set.fa
