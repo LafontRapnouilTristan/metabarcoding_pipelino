@@ -20,10 +20,10 @@ for (i in 1:ncol(seqtab)){
   count <- sum(seqtab[,i] )
   for (j in 1:nrow(seqtab)){
     if (seqtab[j,i]!=0){
-      ids <- c(ids, paste0(rownames(seqtab)[j],": ",seqtab[j,i],";", collapse = ""))
+      ids <- c(ids, paste0("'",rownames(seqtab)[j],"'",": ",seqtab[j,i],";", collapse = ""))
     } 
   } 
-  ids_per_seq[[i]]  <- paste0("seq",i,";count=",count,";",paste0(ids,collapse = ""))
+  ids_per_seq[[i]]  <- paste0("seq",i,";count=",count,";sample={",paste0(ids,collapse = ""),"}")
 }
 names(ids_per_seq) <- colnames(seqtab)
 
