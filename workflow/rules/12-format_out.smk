@@ -7,7 +7,7 @@ rule tab_format_12:
 	benchmark:
     "benchmarks/{run}_tabformat.txt"   
   log:
-    "../log/tab_format_"+files_prefix + ".log"
+    "log/tab_format_"+files_prefix + ".log"
   conda:
     "../envs/obi_env.yaml"
   shell:

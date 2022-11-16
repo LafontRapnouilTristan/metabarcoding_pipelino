@@ -7,7 +7,7 @@ rule merge_clust_11:
   benchmark:
     "benchmarks/{run}_merge_clust.txt" 
   log:
-    "../log/merge_clust_"+files_prefix + ".log"
+    "log/merge_clust_"+files_prefix + ".log"
   conda:
     "../envs/obi_env.yaml"
   shell:

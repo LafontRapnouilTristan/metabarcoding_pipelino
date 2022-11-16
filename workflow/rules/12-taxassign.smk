@@ -8,7 +8,7 @@ rule taxassign_12:
 	benchmark:
     "benchmarks/{run}_taxassing.txt" 
   log:
-    "../log/taxassign"+files_prefix + ".log"
+    "log/taxassign"+files_prefix + ".log"
   conda:
     "../envs/R_env.yaml"
   script:

@@ -10,7 +10,7 @@ rule otu_clust_10:
 	benchmark:
     "benchmarks/{run}_clust.txt" 
   log:
-    "../log/clustering_"+files_prefix + ".log"
+    "log/clustering_"+files_prefix + ".log"
   conda:
     "../envs/suma_env.yaml"
   shell:
