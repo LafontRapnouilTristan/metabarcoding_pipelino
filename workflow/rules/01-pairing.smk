@@ -1,5 +1,5 @@
 # SPLIT FASTQ
-checkpoint split_fastq:
+checkpoint split_fastq_00:
 	input:
 		R1=config["resourcesfolder"]+"{run}/{run}_R1.fastq",
 		R2=config["resourcesfolder"]+"{run}/{run}_R2.fastq"

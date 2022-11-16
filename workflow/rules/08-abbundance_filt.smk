@@ -1,5 +1,5 @@
 # abundance filt
-rule abbun_filt_07:
+rule abbun_filt_08:
   input: 
     config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed_filtAndTrim_derep_cleaned.fasta"
   output:

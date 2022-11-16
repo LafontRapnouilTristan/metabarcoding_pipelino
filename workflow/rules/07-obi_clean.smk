@@ -1,5 +1,5 @@
 # Obiclean
-rule obiclean_06:
+rule obiclean_07:
   input: 
     config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed_filtAndTrim_derep.fasta"
   output:

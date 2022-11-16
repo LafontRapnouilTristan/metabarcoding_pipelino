@@ -1,5 +1,5 @@
 # SPLIT GOOD/BAD ALIGNMENTS
-rule alifilt_03:
+rule alifilt_02:
 	input:
 		config["resultsfolder"]+"{run}/{run}_R1R2.fastq"
 	output:

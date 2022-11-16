@@ -1,5 +1,5 @@
 # DADA2 prep
-checkpoint dada_prep_03:
+checkpoint dada_prep_04:
 	input:
 		config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed.fastq"
 	output:

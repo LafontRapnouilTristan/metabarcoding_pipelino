@@ -1,5 +1,5 @@
 # Bimera removal
-rule bimera_rm_08:
+rule bimera_rm_09:
   input:
     config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed_filtAndTrim_derep_cleaned_abfilt.fasta"
   output:

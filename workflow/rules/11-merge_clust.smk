@@ -1,5 +1,5 @@
 # MERGE CLUSTERS
-rule merge_clust_10:
+rule merge_clust_11:
   input:
     config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed_filtAndTrim_derep_cleaned_abfilt_bimerafree_cl.fasta"
   output:
