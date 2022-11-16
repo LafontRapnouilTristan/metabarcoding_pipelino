@@ -10,8 +10,6 @@ checkpoint split_fastq_00:
 		nfiles=config["split_fastq"]["nfiles"],
 		R1=config["resultsfolder"]+"{run}/splitted_fastq/{run}_R1",
 		R2=config["resultsfolder"]+"{run}/splitted_fastq/{run}_R2"
-	benchmark:
-    "benchmarks/{run}_split_fastq_00.txt"
 	conda:
 		"../envs/obi_env.yaml"
 	shell:
@@ -29,8 +27,6 @@ rule pairing:
 		R2=config["resultsfolder"]+"{run}/splitted_fastq/{run}_R2_{n}.fastq"
 	output:
 		temp(config["resultsfolder"]+"{run}/splitted_fastq/{run}_R1R2_{n}.fastq")
-	benchmark:
-    "benchmarks/{run}_pairing.txt"
 	conda:
 		"../envs/obi_env.yaml"
 	shell:
@@ -57,9 +53,7 @@ rule merge_paired_01:
 	output:	
 		config["resultsfolder"]+"{run}/{run}_R1R2.fastq"
 	params:
-		splittedfastq=config["resultsfolder"]+"{run}/splitted_fastq"
-	benchmark:
-    "benchmarks/{run}_merge_pairing.txt"	
+		splittedfastq=config["resultsfolder"]+"{run}/splitted_fastq"	
 	shell:
 		"""
 		cat {input} > {output}
