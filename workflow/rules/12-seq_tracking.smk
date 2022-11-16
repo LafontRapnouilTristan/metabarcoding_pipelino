@@ -12,7 +12,9 @@ rule seq_tracking_12:
     config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed_filtAndTrim_derep_cleaned_abfilt_bimerafree_cl_agg.fasta" # merged
   output:
     config["resultsfolder"]+"{run}/{run}_seq_tracking.csv"
-   log:
+	benchmark:
+    "benchmarks/{run}_seq_track.txt" 
+  log:
     "log/{run}_seqtrack.log"
   conda:
     "../envs/R_env.yaml"

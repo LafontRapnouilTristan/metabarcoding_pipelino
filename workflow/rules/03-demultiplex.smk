@@ -7,6 +7,8 @@ rule demultiplex_03:
 		unassigned=config["resultsfolder"]+"{run}/{run}_R1R2_good_unassigned.fastq"
 	params:
 		ngs=config["resourcesfolder"]+"{run}/{run}_ngsfilter.tab"
+	benchmark:
+    "benchmarks/{run}_deml.txt"
 	log:
 		"log/demultiplex_{run}.log"
 	conda:

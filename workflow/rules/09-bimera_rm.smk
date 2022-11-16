@@ -6,6 +6,8 @@ rule bimera_rm_09:
     config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed_filtAndTrim_derep_cleaned_abfilt_bimerafree.fasta"
   params:
     multithread=config["general"]["cores"]
+	benchmark:
+    "benchmarks/{run}_bimera.txt" 
   log:
     "log/{run}_rm_bimeara.log"
   conda:

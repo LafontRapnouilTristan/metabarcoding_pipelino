@@ -12,6 +12,8 @@ rule filt_and_trim_04:
     matchIDs=config["filterandtrim"]["matchIDs"],
     verbose=config["filterandtrim"]["verbose"],
     multithread=config["filterandtrim"]["multithread"]
+	benchmark:
+    "benchmarks/{run}_filt_and_trim.txt"    
   log:
     "log/{run}_filt_and_trim.log"
   conda:

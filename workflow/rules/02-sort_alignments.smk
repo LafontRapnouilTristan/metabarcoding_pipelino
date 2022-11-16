@@ -8,6 +8,8 @@ rule alifilt_02:
 	params:
 		minscore=config["alifilt"]["minscore"],
 		prefix=config["resultsfolder"]+"{run}/{run}_R1R2_"
+	benchmark:
+    "benchmarks/{run}_alifilt.txt"
 	log:
 		"log/split_ali_{run}.log"
 	conda:
