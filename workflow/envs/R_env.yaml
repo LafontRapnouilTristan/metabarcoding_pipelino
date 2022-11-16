@@ -8,3 +8,4 @@ dependencies:
   - r-tidyr
   - r-ggplot2
   - r-microseq
+  - r-stringr
