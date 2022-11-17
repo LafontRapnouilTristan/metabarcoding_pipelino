@@ -1,6 +1,6 @@
 This pipeline starts from raw foward (R1) and reverse (R2) `.fastq` files and a `.tab` ngsfilter file.
 
-This pipeline aims to respects the [FAIR](https://www.go-fair.org/fair-principles/) principles using [snakemake](https://snakemake.readthedocs.io/en/stable/#) and [singularity](https://docs.sylabs.io/guides/3.0/user-guide/index.html#) tools.
+This pipeline aims to respects the [FAIR](https://www.go-fair.org/fair-principles/) principles using [snakemake](https://snakemake.readthedocs.io/en/stable/#). 
 
 # Description
 
@@ -14,7 +14,74 @@ A DAG of the pipeline is available [here](dag/dag.svg).
 
 ## Required
 
+### Environment
+In order to run this pipeline you need **snakemake**.
+
+### Files
+
+Raw illumina sequencing output for forward and reverse reads in `.fastq` format
+
 ## Tree
+
+```bash
+.
+|-- README.Rmd
+|-- README.md
+|-- Snakefile
+|-- benchmarks
+|-- config
+|   `-- config.yaml
+|-- dag
+|-- log
+|-- metabarcoding_pipelino.Rproj
+|-- report
+|-- resources
+|   |
+|   |-- run1
+|   |   |-- run1_ngsfilter.tab
+|   |   |-- run1_R1.fastq
+|   |   |-- run1_R2.fastq
+|   |-- run2
+|       |-- run2_ngsfilter.tab
+|       |-- run2_R1.fastq
+|       |-- run2_R2.fastq
+|
+| 
+|-- results
+|   |-- run1
+|   |-- run2
+|
+|
+`-- workflow
+    |-- envs
+    |   |-- R_env.yaml
+    |   |-- obi_env.yaml
+    |   `-- suma_env.yaml
+    |-- rules
+    |   |-- 01-pairing.smk
+    |   |-- 02-sort_alignments.smk
+    |   |-- 03-demultiplex.smk
+    |   |-- 04-dada_prep.smk
+    |   |-- 05-filterandtrim.smk
+    |   |-- 06-derep.smk
+    |   |-- 07-obi_clean.smk
+    |   |-- 08-abbundance_filt.smk
+    |   |-- 09-bimera_rm.smk
+    |   |-- 10-otu_clust.smk
+    |   |-- 11-merge_clust.smk
+    |   |-- 12-format_out.smk
+    |   |-- 12-seq_tracking.smk
+    |   |-- 12-taxassign.smk
+    |   `-- 13-benchmark.smk
+    `-- scripts
+        |-- benchmark.R
+        |-- derep_dada2.R
+        |-- filtandtrim_dada2.R
+        |-- rm_bimera_dada2.R
+        |-- seq_tracking.R
+        `-- taxassign_dada2.R
+
+```
 
 # Pipeline steps and tools
 
