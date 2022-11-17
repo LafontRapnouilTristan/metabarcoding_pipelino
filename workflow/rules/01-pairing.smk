@@ -1,5 +1,5 @@
 # SPLIT FASTQ
-checkpoint split_fastq_00:
+checkpoint split_fastq:
 	input:
 		R1=config["resourcesfolder"]+"{run}/{run}_R1.fastq",
 		R2=config["resourcesfolder"]+"{run}/{run}_R2.fastq"
@@ -53,7 +53,7 @@ rule merge_paired_01:
 	output:	
 		config["resultsfolder"]+"{run}/{run}_R1R2.fastq"
 	params:
-		splittedfastq=config["resultsfolder"]+"{run}/splitted_fastq"	
+		splittedfastq=config["resultsfolder"]+"{run}/splitted_fastq"
 	shell:
 		"""
 		cat {input} > {output}

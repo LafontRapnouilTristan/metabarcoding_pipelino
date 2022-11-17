@@ -6,7 +6,7 @@ rule obiclean_07:
     config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed_filtAndTrim_derep_cleaned.fasta"
   params:
     ratio=config["obiclean"]["ratio"]
-	benchmark:
+  benchmark:
     "benchmarks/{run}/{run}_obiclean.txt" 
   conda:
     "../envs/obi_env.yaml"

@@ -7,7 +7,7 @@ rule otu_clust_10:
   params:
     minsim = config["clustering"]["minsim"],
     threads = config["general"]["cores"]
-	benchmark:
+  benchmark:
     "benchmarks/{run}/{run}_clust.txt" 
   log:
     "log/clustering_"+files_prefix + ".log"

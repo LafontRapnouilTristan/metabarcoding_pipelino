@@ -6,7 +6,7 @@ rule derep_05:
     config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed_filtAndTrim_derep.fasta"
   params:
     simult_reads=config["dereplication"]["simult_reads"]
-	benchmark:
+  benchmark:
     "benchmarks/{run}/{run}_derep.txt" 
   log:
     "log/{run}_derep.log"
