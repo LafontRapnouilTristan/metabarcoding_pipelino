@@ -15,7 +15,7 @@ qualali <- system(cmd,intern = T)
 cmd <- paste0("grep -c '@' " ,path[[3]])
 dml <- system(cmd,intern = T)
 
-cmd <- paste0("grep '@' ",path[[4]]," | wc -l " )
+cmd <- paste0("grep -R '@' ",path[[4]]," | wc -l " )
 filtrim <- system(cmd,intern = T)
 
 cmd <- paste0("grep -c '>' " ,path[[5]])
@@ -86,4 +86,4 @@ df <- data.frame(step=c("aligned",
                          clust_reads,
                          agg_reads)
 )
-write.csv(df,snakemake@output[[1]])
+write.csv2(df,snakemake@output[[1]],rownames=F)
