@@ -29,10 +29,14 @@ Raw illumina sequencing output for forward and reverse reads in `.fastq` format
 |-- README.md
 |-- Snakefile
 |-- benchmarks
+|   |-- run1
+|   |-- run2
 |-- config
 |   |-- config.yaml
 |-- dag
 |-- log
+|   |-- run1
+|   |-- run2
 |-- metabarcoding_pipelino.Rproj
 |-- report
 |-- resources
