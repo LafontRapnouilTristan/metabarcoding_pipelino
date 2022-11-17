@@ -10,8 +10,11 @@ resourcesfolder:
   resources/
 resultsfolder:
   results/
+benchmarksfolder:
+  benchmarks/
 fastqfiles:
   - mother_16s
+  - autre_16s
 mergedfile:
   holobrom_16s
   
@@ -43,7 +46,7 @@ obiclean:
 
 # Abundance filtering
 abb_filt: 
-  mincount: 1
+  mincount: 0
 
 # clustering
 clustering:
@@ -51,4 +54,5 @@ clustering:
   
 # taxa
 taxassign:
-    taxofolder: ../../pipelino/TaxonomyDatabase/silva_nr_v138_train_set.fa
+    taxofolder: ../pipelino/TaxonomyDatabase/silva_nr_v138_train_set.fa
+    multithread: 4
