@@ -3,7 +3,7 @@ rule seq_tracking_12:
     config["resultsfolder"]+"{run}/{run}_R1R2.fastq", # total aligned reads
     config["resultsfolder"]+"{run}/{run}_R1R2_good.fastq", # after filtering
     config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed.fastq", # after deml
-    directory(config["resultsfolder"]+"{run}/dada2_trimmed_fastq"), # trimmed dada2
+    config["resultsfolder"]+"{run}/dada2_trimmed_fastq", # trimmed dada2
     config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed_filtAndTrim_derep.fasta", # dereplicated
     config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed_filtAndTrim_derep_cleaned.fasta", # cleaned
     config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed_filtAndTrim_derep_cleaned_abfilt.fasta", # abb filtered
