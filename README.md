@@ -25,34 +25,34 @@ Raw illumina sequencing output for forward and reverse reads in `.fastq` format
 
 ```bash
 .
-`-- README.Rmd
-`-- README.md
-`-- Snakefile
-`-- benchmarks
-`-- config
+|-- README.Rmd
+|-- README.md
+|-- Snakefile
+|-- benchmarks
+|-- config
 |   |-- config.yaml
-`-- dag
-`-- log
-`-- metabarcoding_pipelino.Rproj
-`-- report
-`-- resources
+|-- dag
+|-- log
+|-- metabarcoding_pipelino.Rproj
+|-- report
+|-- resources
 |   |
-|   `-- run1
+|   |-- run1
 |   |   |-- run1_ngsfilter.tab
 |   |   |-- run1_R1.fastq
 |   |   |-- run1_R2.fastq
-|   `-- run2
+|   |-- run2
 |       |-- run2_ngsfilter.tab
 |       |-- run2_R1.fastq
 |       |-- run2_R2.fastq
 |
 | 
-`-- results
+|-- results
 |   |-- run1
 |   |-- run2
 |
 |
-`-- workflow
+|-- workflow
     |-- envs
     |   |-- R_env.yaml
     |   |-- obi_env.yaml
@@ -73,7 +73,7 @@ Raw illumina sequencing output for forward and reverse reads in `.fastq` format
     |   |-- 12-seq_tracking.smk
     |   |-- 12-taxassign.smk
     |   |-- 13-benchmark.smk
-    `-- scripts
+    |-- scripts
         |-- benchmark.R
         |-- derep_dada2.R
         |-- filtandtrim_dada2.R
