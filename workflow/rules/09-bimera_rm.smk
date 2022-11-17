@@ -7,7 +7,7 @@ rule bimera_rm_09:
   params:
     multithread=config["general"]["cores"]
 	benchmark:
-    "benchmarks/{run}_bimera.txt" 
+    "benchmarks/{run}/{run}_bimera.txt" 
   log:
     "log/{run}_rm_bimeara.log"
   conda:

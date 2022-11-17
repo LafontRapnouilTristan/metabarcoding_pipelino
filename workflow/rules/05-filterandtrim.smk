@@ -13,7 +13,7 @@ rule filt_and_trim_04:
     verbose=config["filterandtrim"]["verbose"],
     multithread=config["filterandtrim"]["multithread"]
 	benchmark:
-    "benchmarks/{run}_filt_and_trim.txt"    
+    "benchmarks/{run}/{run}_filt_and_trim.txt"    
   log:
     "log/{run}_filt_and_trim.log"
   conda:

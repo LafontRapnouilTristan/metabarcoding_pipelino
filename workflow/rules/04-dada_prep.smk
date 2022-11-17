@@ -5,7 +5,7 @@ checkpoint dada_prep_04:
 	output:
 	    directory(config["resultsfolder"]+"{run}/dada2_splitted_fastq")
 	benchmark:
-    "benchmarks/{run}_dada_prep.txt"    
+    "benchmarks/{run}/{run}_dada_prep.txt"    
 	log:
 		"log/osplit_{run}.log"
 	conda:

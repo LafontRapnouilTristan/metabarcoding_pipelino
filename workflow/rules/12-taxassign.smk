@@ -6,7 +6,7 @@ rule taxassign_12:
   output:
     config["resultsfolder"]+"{run}/{run}_taxassigned.csv"
 	benchmark:
-    "benchmarks/{run}_taxassing.txt" 
+    "benchmarks/{run}/{run}_taxassing.txt" 
   log:
     "log/taxassign"+files_prefix + ".log"
   conda:

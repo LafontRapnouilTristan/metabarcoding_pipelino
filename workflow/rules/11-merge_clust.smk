@@ -5,7 +5,7 @@ rule merge_clust_11:
   output:
     config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed_filtAndTrim_derep_cleaned_abfilt_bimerafree_cl_agg.fasta"
   benchmark:
-    "benchmarks/{run}_merge_clust.txt" 
+    "benchmarks/{run}/{run}_merge_clust.txt" 
   log:
     "log/merge_clust_"+files_prefix + ".log"
   conda:

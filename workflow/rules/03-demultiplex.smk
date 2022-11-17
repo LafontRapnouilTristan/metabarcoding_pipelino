@@ -8,7 +8,7 @@ rule demultiplex_03:
 	params:
 		ngs=config["resourcesfolder"]+"{run}/{run}_ngsfilter.tab"
 	benchmark:
-    "benchmarks/{run}_deml.txt"
+    "benchmarks/{run}/{run}_deml.txt"
 	log:
 		"log/demultiplex_{run}.log"
 	conda:
