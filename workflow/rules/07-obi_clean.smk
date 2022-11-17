@@ -7,7 +7,9 @@ rule obiclean_07:
   params:
     ratio=config["obiclean"]["ratio"]
   benchmark:
-    "benchmarks/{run}/{run}_obiclean.txt" 
+    "benchmarks/{run}/obiclean.txt" 
+  log:
+    "log/{run}/obiclean.log"
   conda:
     "../envs/obi_env.yaml"
   shell:

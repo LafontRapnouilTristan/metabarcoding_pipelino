@@ -5,9 +5,9 @@ rule tab_format_12:
   output:
     config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed_filtAndTrim_derep_cleaned_abfilt_bimerafree_cl_agg.tab"
   benchmark:
-    "benchmarks/{run}/{run}_tabformat.txt"   
+    "benchmarks/{run}/tabformat.txt"   
   log:
-    "log/tab_format_"+files_prefix + ".log"
+    "log/{run}/tab_format.log"
   conda:
     "../envs/obi_env.yaml"
   shell:

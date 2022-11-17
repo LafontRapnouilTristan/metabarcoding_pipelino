@@ -9,9 +9,9 @@ rule alifilt_02:
 		minscore=config["alifilt"]["minscore"],
 		prefix=config["resultsfolder"]+"{run}/{run}_R1R2_"
 	benchmark:
-	    "benchmarks/{run}/{run}_alifilt.txt"
+	    "benchmarks/{run}/alifilt.txt"
 	log:
-		"log/split_ali_{run}.log"
+		"log/{run}/split_ali.log"
 	conda:
 		"../envs/obi_env.yaml"
 	shell:

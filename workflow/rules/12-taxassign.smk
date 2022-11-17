@@ -5,10 +5,12 @@ rule taxassign_12:
     config["taxassign"]["taxofolder"]
   output:
     config["resultsfolder"]+"{run}/{run}_taxassigned.csv"
+  params:
+    config["taxassign"]["multithread"]
   benchmark:
-    "benchmarks/{run}/{run}_taxassing.txt" 
+    "benchmarks/{run}/taxassign.txt" 
   log:
-    "log/taxassign"+files_prefix + ".log"
+    "log/{run}/taxassign.log"
   conda:
     "../envs/R_env.yaml"
   script:

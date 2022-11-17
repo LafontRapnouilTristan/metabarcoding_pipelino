@@ -86,4 +86,4 @@ df <- data.frame(step=c("aligned",
                          clust_reads,
                          agg_reads)
 )
-write.csv2(df,snakemake@output[[1]],rownames=F)
+write.csv2(df,snakemake@output[[1]],row.names=F)

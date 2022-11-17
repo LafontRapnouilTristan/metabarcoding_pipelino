@@ -7,9 +7,9 @@ rule abbun_filt_08:
   params:
     mincount=config["abb_filt"]["mincount"]
   benchmark:
-    "benchmarks/{run}/{run}_abbfilt.txt" 
+    "benchmarks/{run}/abbfilt.txt" 
   log:
-    "log/{run}_abb_filt.log"
+    "log/{run}/abb_filt.log"
   conda:
     "../envs/obi_env.yaml"
   shell:

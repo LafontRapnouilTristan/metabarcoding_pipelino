@@ -13,9 +13,9 @@ rule filt_and_trim_04:
     verbose=config["filterandtrim"]["verbose"],
     multithread=config["filterandtrim"]["multithread"]
   benchmark:
-    "benchmarks/{run}/{run}_filt_and_trim.txt"    
+    "benchmarks/{run}/filt_and_trim.txt"    
   log:
-    "log/{run}_filt_and_trim.log"
+    "log/{run}/filt_and_trim.log"
   conda:
     "../envs/R_env.yaml"
   script:

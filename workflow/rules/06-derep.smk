@@ -7,9 +7,9 @@ rule derep_05:
   params:
     simult_reads=config["dereplication"]["simult_reads"]
   benchmark:
-    "benchmarks/{run}/{run}_derep.txt" 
+    "benchmarks/{run}/derep.txt" 
   log:
-    "log/{run}_derep.log"
+    "log/{run}/derep.log"
   conda:
     "../envs/R_env.yaml"
   script:

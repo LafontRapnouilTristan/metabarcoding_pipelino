@@ -13,9 +13,9 @@ rule seq_tracking_12:
   output:
     config["resultsfolder"]+"{run}/{run}_seq_tracking.csv"
   benchmark:
-    "benchmarks/{run}/{run}_seq_track.txt" 
+    "benchmarks/{run}/seq_track.txt" 
   log:
-    "log/{run}_seqtrack.log"
+    "log/{run}/seqtrack.log"
   conda:
     "../envs/R_env.yaml"
   script:

@@ -8,9 +8,9 @@ rule demultiplex_03:
 	params:
 		ngs=config["resourcesfolder"]+"{run}/{run}_ngsfilter.tab"
 	benchmark:
-    "benchmarks/{run}/{run}_deml.txt"
+	    "benchmarks/{run}/deml.txt"
 	log:
-		"log/demultiplex_{run}.log"
+		"log/{run}/demultiplex.log"
 	conda:
 		"../envs/obi_env.yaml"
 	shell:
