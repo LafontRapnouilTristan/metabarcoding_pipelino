@@ -28,7 +28,7 @@ rule all:
         expand(config["resultsfolder"]+"{run}/{run}_R1R2_good_demultiplexed_filtAndTrim_derep_cleaned_abfilt_bimerafree_cl_agg.tab",run = config["fastqfiles"]),
         expand(config["resultsfolder"]+"{run}/{run}_taxassigned.csv",run = config["fastqfiles"]),
         expand(config["resultsfolder"]+"{run}/{run}_seq_tracking.csv",run = config["fastqfiles"]),
-        expand(benchmarks/{run}/benchmark.png,run = config["fastqfiles"])
+        expand(config["benchmarksfolder"]+"{run}/{run}_benchmark.png",run = config["fastqfiles"])
         
 include: "workflow/rules/01-pairing.smk"
 include: "workflow/rules/02-sort_alignments.smk"
