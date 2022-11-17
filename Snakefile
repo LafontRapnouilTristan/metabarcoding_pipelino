@@ -12,6 +12,7 @@ This is a snakemake workflow that analyzes DNA metabarcoding data with the OBITo
 
 configfile:"config/config.yaml"
 
+report: "report/workflow.rep"
 
 
 # GET FINAL OUTPUT(S)
