@@ -3,7 +3,7 @@ rule benchmark:
   input:
     "benchmarks/{run}/"
   output:
-    report("benchmarks/{run}/benchmark.png")
+    report("benchmarks/{run}/{run}_benchmark.png")
   log:
     "log/{run}_benchmark.log"
   conda:
