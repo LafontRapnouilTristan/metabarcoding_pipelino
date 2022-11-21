@@ -98,7 +98,7 @@ a - split fasq for faster processing
 **OBItools** - [*obidistribute*](https://pythonhosted.org/OBITools/scripts/obidistribute.html)
 
 options : 
-  `-n` : number of files to split in, `nfile` in [`config`](config/config.yaml). 
+  `-n` : number of files to split in, `nfile` in [`config`](config/config.yaml). (between 2 and 1000).
 
 b - align paired-end sequence
 
