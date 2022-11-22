@@ -10,8 +10,6 @@ resourcesfolder:
   resources/
 resultsfolder:
   results/
-benchmarksfolder:
-  benchmarks/
 fastqfiles:
   - mother_16s
   - autre_16s
