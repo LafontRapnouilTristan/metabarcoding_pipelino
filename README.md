@@ -19,7 +19,9 @@ In order to run this pipeline you need **snakemake**.
 
 ### Files
 
-Raw illumina sequencing output for forward and reverse reads in `.fastq` format
+Raw illumina sequencing output for forward and reverse reads in `.fastq` format.
+Forward file named XXX_R1.fastq and reverse XXX_R2.fastq.
+Additionally, you will need a text file named XXX_ngsfilter.tab as required by the [ngsfilter](https://pythonhosted.org/OBITools/scripts/ngsfilter.html) function of the obitools.
 
 ## Tree
 
