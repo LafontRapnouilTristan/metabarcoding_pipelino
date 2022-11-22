@@ -7,7 +7,7 @@ library(dada2)
 
 input <- snakemake@input[[1]]
 uniques <- derepFastq(input,
-                    #  n=snakemake@params[[1]],
+                      n=snakemake@params[[1]],
                       verbose=TRUE)
 
 seqtab <- makeSequenceTable(uniques)

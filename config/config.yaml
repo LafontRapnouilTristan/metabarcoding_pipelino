@@ -36,7 +36,7 @@ filterandtrim:
 
 # dereplication
 dereplication:
-  simult_reads: 1e06
+  simult_reads: 1000000
 
 # obiclean
 obiclean:
