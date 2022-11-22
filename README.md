@@ -21,27 +21,30 @@ In order to run this pipeline you need **snakemake**.
 
 ### Files
 
-Raw illumina sequencing output for forward and reverse reads in `.fastq` format.
+Raw illumina sequencing output for forward and reverse reads in `.fastq` format
+
 Forward file named *XXX_R1.fastq* and reverse *XXX_R2.fastq*.
-Additionally, you will need a text file named *XXX_ngsfilter.tab* as required by the [ngsfilter](https://pythonhosted.org/OBITools/scripts/ngsfilter.html) function of the obitools.
+
+Additionally, you will need a text file named *XXX_ngsfilter.tab* as required by the [ngsfilter](https://pythonhosted.org/OBITools/scripts/ngsfilter.html) command of the obitools.
 
 ## Tree
 
+This is what your directory tree should look like in order to run the pipeline.
+
+Name with ```*.extension``` are file and other are folders.
+
+The different **run** will be independantly processed.
+
+Make sure that you have a different folders containing associated resources.
+
 ```bash
 .
-|-- README.Rmd
-|-- README.md
 |-- Snakefile
 |-- benchmarks
-|   |-- run1
-|   |-- run2
 |-- config
 |   |-- config.yaml
 |-- dag
 |-- log
-|   |-- run1
-|   |-- run2
-|-- metabarcoding_pipelino.Rproj
 |-- report
 |-- resources
 |   |
@@ -53,13 +56,7 @@ Additionally, you will need a text file named *XXX_ngsfilter.tab* as required by
 |       |-- run2_ngsfilter.tab
 |       |-- run2_R1.fastq
 |       |-- run2_R2.fastq
-|
-| 
 |-- results
-|   |-- run1
-|   |-- run2
-|
-|
 |-- workflow
     |-- envs
     |   |-- R_env.yaml
@@ -108,6 +105,9 @@ b - align paired-end sequence
 
 **OBItools** - [*illuminapairedend*](https://pythonhosted.org/OBItools/scripts/illuminapairedend.html)
 
+c - merge output and remove temp files
+
+basic cat and rm UNIX commands.
 
 ### 2 - filtering alignments
 
@@ -120,18 +120,35 @@ options :
 **OBItools** - [*obisplit*](https://pythonhosted.org/OBItools/scripts/obisplit.html)
 
 options :
-  `-t` : split according to a condition, here `ali = good`
+  `-t` : split according to a condition, here `ali = good`.
+  
+  `-p` : prefix of the resulting files.
 
 ### 3 - demultiplexing and tag/primer trimming
+
+a - annotate average phred quality
+
+**OBItools** - [*obiannotate*](https://pythonhosted.org/OBItools/scripts/obiannotate.html)
+
+options : 
+    `-S` : expression used for annotation, Avgqphred:-int(math.log10(sum(sequence.quality)/len(sequence))\*10)
 
 **OBItools** - [*ngsfilter*](https://pythonhosted.org/OBItools/scripts/ngsfilter.html)
 
 options :
   `-ngs` : ngs filter used for the demultiplexing in a `.tab` format.
   Check [input](##Required) for details about input format.
+  `-u` : name of the unassigned output file.
   
+### 4 - prepare files for dada2
 
-### 4 - sequence quality filtering and trimming
+**OBItools** - [*obisplit*](https://pythonhosted.org/OBItools/scripts/obisplit.html)
+
+options : 
+    `-t` : attribute to use for splitting, here `sample`.
+    `-p` : path to split into.
+
+### 5 - sequence quality filtering and trimming
 
 **dada2** - [*filterAndTrim*](https://rdrr.io/bioc/dada2/man/filterAndTrim.html)
 
@@ -144,11 +161,12 @@ options :
   `verbose`: TRUE
   `multithread`: 15
 
-### 5 - sequence dereplication
+### 6 - sequence dereplication
 
 **dada2** - [*derepFastq*](https://rdrr.io/bioc/dada2/man/derepFastq.html)
 
 options :
+    `n` : number of sequence simutaneously processed.
 
 ## II - Key processing 
 
@@ -157,12 +175,16 @@ options :
 **OBItools** - [*obiclean*](https://pythonhosted.org/OBItools/scripts/obiclean.html)
 
 options :
-
+    `-r` : Threshold ratio between counts (rare/abundant counts) of two sequence records so that the less abundant one is a variant of the more abundant (default: 1, i.e. all less abundant sequences are variants)
+    `-H` : Select only sequences with the head status in a least one sample.
+    
 ### 2 - Abundance filtering
 
-**OBItools** - [*obigrep*](https://pythonhosted.org/OBItools/scripts/obigrep.html)
+**OBItools** - [*obigrep*](https://pythonhosted.org/OBITools/scripts/obigrep.html)
 
 options : 
+    `-s` : Regular expression pattern to be tested against the sequence itself. The pattern is case insensitive. Here,  `'^[acgt]+$'` , corresponding only to sequence containing no ambiguous nucleotids (*e.g.* n).
+    `-p` : Predicat to filter, here `count>{params.mincount}` to filter on reads count.
 
 ## III - Post-processing
 
@@ -171,21 +193,50 @@ options :
 **dada2** - [*removeBimeraDenovo*](https://rdrr.io/bioc/dada2/man/removeBimeraDenovo.html)
 
 options :
+    `multithread` : number of thread to use for bimera detection.
 
 ### 2 Sequence clustering
 
 **sumaclust** - [*sumaclust*](https://git.metabarcoding.org/OBItools/sumaclust/-/wikis/home)
 
 options :
-
+    `-t` : Score threshold for clustering (*e.g.* 0.97).
+    `-p` : Threads to use for clustering.
+    
 ### 3 Merging Clusters
 
 **OBItools** - [*obiselect*](https://pythonhosted.org/OBItools/scripts/obiselect.html)
 
 options :
+    `-c` : Attribute used to categorize the sequence records, *i.e.* `cluster`.
+    `-n` : Indicates how many sequence records per group have to be retrieved, *i.e.* `1`.
+    `--merge` : Attribute to merge, *i.e.* `sample`.
+    `-f` :  function used to score the sequence, *i.e.* `count` to have the reads per sample.
+    `-M` : maximize the `-f` function and order sample IDs in the headers of the sequences by their reads count.
 
 ### 4 Output Formating
 
 **OBItools** - [*obitab*](https://pythonhosted.org/OBItools/scripts/obitab.html)
 
 options :
+    `-n` : String written in the table for the not available values (*i.e.* NA).
+    `-d` : Removes column containing the sequence definition in the output tab file.
+    `-d` : add column at the end of the tab for the sequence itself.
+    
+### 5 Assign taxonomy
+
+**dada2** - [*assignTaxonomy*](https://rdrr.io/bioc/dada2/man/assignTaxonomy.html)
+
+options : 
+    `refFasta` : Path to the `.fasta` database used to assign taxonomy to the sequence table.
+    `multithread` : Number of threads used to perform taxonomic assignment.
+
+## IV - Workflow evaluation
+
+### 1 Sequence tracking
+
+For each step of the workflow, computes the total number of sequences and reads.
+
+### 2 Benchmark
+
+For each step of the workflow, computes the amount of time and computing resources used and plot them.
