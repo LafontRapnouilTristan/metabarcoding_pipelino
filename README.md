@@ -94,18 +94,18 @@ Make sure that you have a different folders containing associated resources.
 
 ### 1 - merging paired-end sequenced reads
 
-+ **a** - split fasq for faster processing
+**a** - split fasq for faster processing
 
 **OBItools** - [*obidistribute*](https://pythonhosted.org/OBITools/scripts/obidistribute.html)
 
 options : 
   - `-n` : number of files to split in, `nfile` in [`config`](config/config.yaml). (between 2 and 1000).
 
-+ **b** - align paired-end sequence
+**b** - align paired-end sequence
 
 **OBItools** - [*illuminapairedend*](https://pythonhosted.org/OBItools/scripts/illuminapairedend.html)
 
-+ **c** - merge output and remove temp files
+**c** - merge output and remove temp files
 
 basic cat and rm UNIX commands.
 
@@ -126,14 +126,14 @@ options :
 
 ### 3 - demultiplexing and tag/primer trimming
 
-+ **a** - annotate average phred quality
+**a** - annotate average phred quality
 
 **OBItools** - [*obiannotate*](https://pythonhosted.org/OBItools/scripts/obiannotate.html)
 
 options : 
     - `-S` : expression used for annotation, Avgqphred:-int(math.log10(sum(sequence.quality)/len(sequence))\*10)
 
-+ **b** - demultiplex according to the ngsfilter file
+**b** - demultiplex according to the ngsfilter file
 
 **OBItools** - [*ngsfilter*](https://pythonhosted.org/OBItools/scripts/ngsfilter.html)
 
