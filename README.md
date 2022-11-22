@@ -131,7 +131,7 @@ options :
 **OBItools** - [*obiannotate*](https://pythonhosted.org/OBItools/scripts/obiannotate.html)
 
 options : 
-    - `-S` : expression used for annotation, Avgqphred:-int(math.log10(sum(sequence.quality)/len(sequence))\*10)
+  - `-S` : expression used for annotation, Avgqphred:-int(math.log10(sum(sequence.quality)/len(sequence))\*10)
 
 **b** - demultiplex according to the ngsfilter file
 
@@ -147,8 +147,8 @@ options :
 **OBItools** - [*obisplit*](https://pythonhosted.org/OBItools/scripts/obisplit.html)
 
 options : 
-    - `-t` : attribute to use for splitting, here `sample`.
-    - `-p` : path to split into.
+   - `-t` : attribute to use for splitting, here `sample`.
+   - `-p` : path to split into.
 
 ### 5 - sequence quality filtering and trimming
 
