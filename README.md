@@ -9,6 +9,7 @@ Pipeline for raw NGS metabarcoding data processing using a combination of the OB
 You'll find parameters used by the pipeline in the [config file](config/config.yaml).
 
 DAG of the pipeline:
+
 ![DAG of the pipeline](dag/dag.png).
 
 # Input
