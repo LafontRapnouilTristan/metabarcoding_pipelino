@@ -1,6 +1,6 @@
 # general params
 general:
-    cores: 4
+    cores: 8
 reads_prime:
   - R1
   - R2
@@ -14,7 +14,11 @@ benchmarksfolder:
   benchmarks/
 fastqfiles:
   - mother_16s
-  - autre_16s
+ # - seedling_16s
+ # - mother_ITS2
+ # - seedling_ITS2
+ # - comp_mother_16s
+ # - mother_glom
 mergedfile:
   holobrom_16s
   
@@ -34,7 +38,7 @@ filterandtrim:
   truncQ: 2
   matchIDs: TRUE
   verbose: TRUE
-  multithread: 4
+  multithread: 8
 
 # dereplication
 dereplication:
@@ -46,7 +50,7 @@ obiclean:
 
 # Abundance filtering
 abb_filt: 
-  mincount: 0
+  mincount: 1
 
 # clustering
 clustering:
@@ -54,5 +58,5 @@ clustering:
   
 # taxa
 taxassign:
-    taxofolder: ../pipelino/TaxonomyDatabase/silva_nr_v138_train_set.fa
-    multithread: 4
+    taxofolder: ../genotoulm/taxonomy_database/silva_nr_v138_train_set.fa
+    multithread: 8
