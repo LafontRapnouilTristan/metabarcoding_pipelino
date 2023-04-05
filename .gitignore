@@ -8,5 +8,4 @@ results
 resources
 .snakemake
 log
-dag/
 benchmarks

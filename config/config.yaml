@@ -10,8 +10,6 @@ resourcesfolder:
   resources/
 resultsfolder:
   results/
-benchmarksfolder:
-  benchmarks/
 fastqfiles:
   - mother_16s
  # - seedling_16s
@@ -42,7 +40,7 @@ filterandtrim:
 
 # dereplication
 dereplication:
-  simult_reads: 1e06
+  simult_reads: 1000000
 
 # obiclean
 obiclean:
